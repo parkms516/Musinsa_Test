@@ -22,10 +22,10 @@ def login(driver):
     time.sleep(2)
 
     id_input = driver.find_element(By.CSS_SELECTOR, "input[placeholder='통합계정 또는 이메일']")
-    id_input.send_keys("ysms516")
+    id_input.send_keys("******")
 
     pw_input = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
-    pw_input.send_keys("parkminsang516!@")
+    pw_input.send_keys("******")
 
     driver.find_element(By.CSS_SELECTOR, "button[data-button-id='login_login']").click()
     time.sleep(3)
