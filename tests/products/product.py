@@ -103,8 +103,8 @@ def TC_PRODUCT_02(driver):
                 print("할인율 계산 가격 일치 | PASS")
                 pass_count += 1
             else:
-                diff = sale_price - calc_price
-                print(f"할인율 계산 가격 불일치 (차이: {diff}원) | FAIL")
+                gap = sale_price - calc_price
+                print(f"할인율 계산 가격 불일치 (차이: {gap}원) | FAIL")
                 fail_count += 1
 
         except Exception:

@@ -34,7 +34,7 @@ def TC_SEARCH_02(driver):
     print(f"입력한 검색어 : {keyword}")
 
     search_product(driver, keyword)
-    print("검색 완료 및 결과 확인")
+    print("검색 완료 및 상품 로딩")
 
     print("\n[테스트 결과]")
     try:
