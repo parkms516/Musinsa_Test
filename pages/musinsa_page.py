@@ -15,6 +15,9 @@ def open_main(driver):
 
 # 로그인
 def login(driver):
+    user_id = input("아이디 입력: ")
+    user_pw = input("비밀번호 입력: ")
+
     driver.get("https://www.musinsa.com/main/musinsa/recommend?gf=F")
     time.sleep(2)
 
@@ -22,10 +25,10 @@ def login(driver):
     time.sleep(2)
 
     id_input = driver.find_element(By.CSS_SELECTOR, "input[placeholder='통합계정 또는 이메일']")
-    id_input.send_keys("******")
+    id_input.send_keys(user_id)
 
     pw_input = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
-    pw_input.send_keys("******")
+    pw_input.send_keys(user_pw)
 
     driver.find_element(By.CSS_SELECTOR, "button[data-button-id='login_login']").click()
     time.sleep(3)

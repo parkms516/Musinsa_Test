@@ -27,8 +27,8 @@ driver = get_driver()
 #TC_PRODUCT_02(driver)
 
 # 5. 장바구니 테스트
-TC_CART_01(driver)
-#TC_CART_02(driver)
+#TC_CART_01(driver)
+TC_CART_02(driver)
 
 
 # 테스트 종료 문구 및 브라우저 닫기
