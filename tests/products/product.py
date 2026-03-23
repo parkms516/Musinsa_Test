@@ -41,6 +41,8 @@ def TC_PRODUCT_01(driver):
     else:
         print("상품 상세페이지로 이동 실패 | FAIL")
 
+
+
 # TC_PRODUCT_02 | 할인율 계산
 def TC_PRODUCT_02(driver):
     print("\n[TC_PRODUCT_02] 할인율 계산")

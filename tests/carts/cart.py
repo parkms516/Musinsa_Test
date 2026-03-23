@@ -77,6 +77,8 @@ def TC_CART_01(driver):
     except Exception:
         print(f"\n[테스트 결과]\n상품 리스트 조회 실패 또는 에러 발생 | FAIL")
 
+
+
 # TC_CART_02 | 장바구니 수량 확인
 def TC_CART_02(driver):
     print("\n[TC_CART_02] 장바구니 수량 확인")

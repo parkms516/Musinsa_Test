@@ -23,6 +23,7 @@ def TC_SEARCH_01(driver):
         print(f"\n[테스트 결과]\n상품 요소를 찾을 수 없음 | FAIL")
 
 
+
 # TC_SEARCH_02 | 존재하지 않는 검색
 def TC_SEARCH_02(driver):
     print("\n[TC_SEARCH_02] 존재하지 않는 검색")
@@ -48,6 +49,7 @@ def TC_SEARCH_02(driver):
             print("검색 결과 없음 문구는 없으나 노출된 상품이 0개임 | PASS")
         else:
             print(f"존재하지 않는 검색어임에도 상품 노출 | FAIL")
+
 
 
 # TC_SEARCH_03 | 빈칸 검색

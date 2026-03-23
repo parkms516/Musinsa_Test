@@ -44,6 +44,8 @@ def TC_FILTER_01(driver):
     except Exception:
         print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
 
+
+
 # TC_FILTER_02 | 여성 상품 노출 검증
 def TC_FILTER_02(driver):
     print("\n[TC_FILTER_02] 여성 상품 노출 검증")
@@ -87,6 +89,8 @@ def TC_FILTER_02(driver):
 
     except Exception:
         print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+
+
 
 # TC_FILTER_03 | 복수 필터 적용
 def TC_FILTER_03(driver):

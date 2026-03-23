@@ -62,6 +62,8 @@ def TC_SORTING_01(driver):
     except Exception:
         print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
 
+
+
 # TC_SORTING_02 | 낮은 할인율순 정렬
 def TC_SORTING_02(driver):
     print("\n[TC_SORTING_02] 할인율순 정렬")
