@@ -46,9 +46,9 @@ def TC_FILTER_01(driver):
 
 
 
-# TC_FILTER_02 | 여성 상품 노출 검증
+# TC_FILTER_02 | 여성 상품 배제
 def TC_FILTER_02(driver):
-    print("\n[TC_FILTER_02] 여성 상품 노출 검증")
+    print("\n[TC_FILTER_02] 여성 상품 배제")
 
     open_main(driver)
     open_search(driver)
@@ -65,7 +65,7 @@ def TC_FILTER_02(driver):
         pass_count = 0
         fail_count = 0
 
-        print(f"\n[여성 상품 노출 검증 (랜덤 최대 {len(test_items)}개)]")
+        print(f"\n[여성 상품 배제 (랜덤 최대 {len(test_items)}개)]")
 
         for i, item in enumerate(test_items, 1):
             try:
