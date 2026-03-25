@@ -1,4 +1,4 @@
-# 🛒 무신사(MUSINSA) 웹 E2E 테스트 자동화 프레임워크 (QA)
+# 무신사(MUSINSA) 웹 E2E 테스트 자동화 프레임워크 (QA)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
