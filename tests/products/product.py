@@ -2,11 +2,12 @@ from pages.musinsa_page import *
 
 # TC_PRODUCT_01 | 상품 상세페이지 이동
 def TC_PRODUCT_01(driver):
-    print("\n[TC_PRODUCT_01] 상품 상세페이지 이동")
+    print("[TC_PRODUCT_01] 상품 상세페이지 이동")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     scroll_down(driver, 3)
     time.sleep(2)
@@ -19,7 +20,7 @@ def TC_PRODUCT_01(driver):
         selected_item = items[random_index]
 
         goods_name = selected_item.find_element(By.CSS_SELECTOR, "a.gtm-select-item span").text
-        print(f"선택한 상품 : {goods_name} ({random_index}번째)")
+        print(f"선택한 상품 : {goods_name}")
 
         product_link = selected_item.find_element(By.XPATH, './/a[contains(@class, "gtm-select-item")]')
         driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", product_link)
@@ -45,11 +46,13 @@ def TC_PRODUCT_01(driver):
 
 # TC_PRODUCT_02 | 할인율 계산
 def TC_PRODUCT_02(driver):
-    print("\n[TC_PRODUCT_02] 할인율 계산")
+    print("[TC_PRODUCT_02] 할인율 계산")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
+    print(f"'{keyword}' 검색 완료 및 상품 로딩")
 
     scroll_down(driver, 3)
     time.sleep(2)

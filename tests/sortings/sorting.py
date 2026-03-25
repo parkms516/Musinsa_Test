@@ -2,11 +2,12 @@ from pages.musinsa_page import *
 
 # TC_SORTING_01 | 낮은 가격순 정렬
 def TC_SORTING_01(driver):
-    print("\n[TC_SORTING_01] 낮은 가격순 정렬")
+    print("[TC_SORTING_01] 낮은 가격순 정렬")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     click_sort_button(driver)
     sort_low_price(driver)
@@ -14,7 +15,7 @@ def TC_SORTING_01(driver):
     scroll_down(driver, 3)
     driver.execute_script("window.scrollTo(0,0)")
     time.sleep(2)
-    print("상품 로딩 및 정렬 완료")
+    print(f"'{keyword}' 상품 로딩 및 정렬 완료")
 
     try:
         items = get_product_items(driver)
@@ -55,22 +56,23 @@ def TC_SORTING_01(driver):
                 print(f"{i:02d} | {current_price}원 > {next_price}원 | FAIL")
                 fail_count += 1
 
-        print("\n[최종 테스트 결과]")
+        print("\n[테스트 결과]")
         print(f"PASS : {pass_count}건")
         print(f"FAIL : {fail_count}건")
 
     except Exception:
-        print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 | FAIL")
 
 
 
 # TC_SORTING_02 | 낮은 할인율순 정렬
 def TC_SORTING_02(driver):
-    print("\n[TC_SORTING_02] 할인율순 정렬")
+    print("[TC_SORTING_02] 할인율순 정렬")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     click_sort_button(driver)
     sort_sale_price(driver)
@@ -78,7 +80,7 @@ def TC_SORTING_02(driver):
     scroll_down(driver, 3)
     driver.execute_script("window.scrollTo(0,0)")
     time.sleep(2)
-    print("상품 로딩 및 정렬 완료")
+    print(f"'{keyword}' 상품 로딩 및 정렬 완료")
 
     try:
         items = get_product_items(driver)
@@ -128,4 +130,4 @@ def TC_SORTING_02(driver):
         print(f"FAIL : {fail_count}건")
 
     except Exception:
-        print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 | FAIL")

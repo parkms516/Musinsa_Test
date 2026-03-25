@@ -1,130 +1,75 @@
 from utils.driver import get_driver
 from tests.searchs.search import *
 from tests.filters.filter import *
-from tests.sortings.sorting import TC_SORTING_01, TC_SORTING_02
+from tests.sortings.sorting import *
 from tests.products.product import *
 from tests.carts.cart import *
 
-# ==========================================
-# 1. 테스트 그룹 정의
-# ==========================================
-TEST_SUITES = {
-    "search": [
-        ("TC_SEARCH_01", TC_SEARCH_01),
-        ("TC_SEARCH_02", TC_SEARCH_02),
-        ("TC_SEARCH_03", TC_SEARCH_03)
-    ],
-    "filter": [
-        ("TC_FILTER_01", TC_FILTER_01),
-        ("TC_FILTER_02", TC_FILTER_02),
-        ("TC_FILTER_03", TC_FILTER_03)
-    ],
-    "sorting": [
-        ("TC_SORTING_01", TC_SORTING_01),
-        ("TC_SORTING_02", TC_SORTING_02)
-    ],
-    "product": [
-        ("TC_PRODUCT_01", TC_PRODUCT_01),
-        ("TC_PRODUCT_02", TC_PRODUCT_02)
-    ],
-    "cart": [
-        ("TC_CART_01", TC_CART_01),
-        ("TC_CART_02", TC_CART_02)
-    ]
-}
-
-# all = 전체 테스트
-TEST_SUITES["all"] = sum(TEST_SUITES.values(), [])
+ALL_TESTS = [
+    TC_SEARCH_01, TC_SEARCH_02, TC_SEARCH_03,
+    TC_FILTER_01, TC_FILTER_02, TC_FILTER_03,
+    TC_SORTING_01, TC_SORTING_02,
+    TC_PRODUCT_01, TC_PRODUCT_02,
+    TC_CART_01, TC_CART_02
+]
 
 
 def main():
-    # ==========================================
-    # 2. 메뉴 출력
-    # ==========================================
-    print("\n" + "="*50)
-    print("🛒 무신사 자동화 테스트 프로그램 🛒")
-    print("="*50)
+    driver = None
 
-    all_tests = TEST_SUITES["all"]
+    while True:
+        print("\n[테스트 목록]")
+        print("0 | 전체 테스트")
+        for i in range(len(ALL_TESTS)):
+            print(f"{i + 1} | {ALL_TESTS[i].__name__}")
 
-    # 번호 목록 출력
-    for i, (tc_name, _) in enumerate(all_tests, start=1):
-        print(f"{i}. {tc_name}")
+        choice = input("\n실행할 번호 입력 (종료 = n) : ").strip()
 
-    print("-" * 50)
-    print("👉 번호 선택 (예: 1 2 3)")
-    print("👉 또는 그룹 입력 (search / filter / sorting / product / cart / all)")
-    print("-" * 50)
+        if choice.lower() == 'n':
+            break
 
-    target = input("입력: ").strip().lower()
+        if choice.isdigit():
+            num = int(choice)
+            selected_tests = []
 
-    # ==========================================
-    # 3. 입력 처리
-    # ==========================================
-    selected_tests = []
+            if num == 0:
+                selected_tests = ALL_TESTS
+                print("\n[전체 테스트] 시작")
+                print("-" * 50)
 
-    # 숫자 입력 (예: "1 2 3")
-    if target and target[0].isdigit():
-        numbers = target.split()
+            elif 1 <= num <= len(ALL_TESTS):
+                selected_tests = [ALL_TESTS[num - 1]]
+                print(f"\n[{ALL_TESTS[num - 1].__name__}] 시작")
+                print("-" * 50)
 
-        for num in numbers:
-            if num.isdigit():
-                idx = int(num) - 1
-                if 0 <= idx < len(all_tests):
-                    selected_tests.append(all_tests[idx])
+            else:
+                print("[없는 번호] 다시 확인해주세요.")
+                continue
 
-    # 그룹 입력
-    elif target in TEST_SUITES:
-        selected_tests = TEST_SUITES[target]
+            # --- 실제 실행 로직 ---
+            if driver is None:
+                driver = get_driver()
 
-    # 잘못된 입력
-    if not selected_tests:
-        print(f"\n❌ 잘못된 입력입니다. 프로그램 종료")
-        return
+            for test_case in selected_tests:
+                try:
+                    driver.get("https://www.musinsa.com")
+                    test_case(driver)
 
-    # ==========================================
-    # 4. 테스트 실행
-    # ==========================================
-    print("\n" + "="*50)
-    print("🚀 테스트 실행 시작")
-    print("="*50 + "\n")
+                except Exception as e:
+                    print(f"오류 발생 : {e}")
 
-    driver = get_driver()
-    pass_count = 0
-    fail_count = 0
+        else:
+            print("숫자 또는 'n'만 입력 가능합니다.")
 
-    try:
-        for tc_name, tc_func in selected_tests:
-            print(f"▶ 실행 중 : {tc_name}")
+        print("-" * 50)
+        again = input("다른 테스트를 더 진행할까요? (y/n) : ").strip().lower()
+        if again == 'n':
+            break
 
-            try:
-                driver.get("https://www.musinsa.com/app/")
-                tc_func(driver)
-
-                print(f"✅ PASS: {tc_name}")
-                pass_count += 1
-
-            except Exception as e:
-                print(f"❌ FAIL: {tc_name} - {e}")
-                fail_count += 1
-
-            print("-" * 50)
-
-    finally:
+    if driver:
+        print("프로그램을 종료하고 브라우저를 닫습니다.")
         driver.quit()
 
-    # ==========================================
-    # 5. 결과 출력
-    # ==========================================
-    print("\n" + "="*50)
-    print("📊 테스트 결과 요약")
-    print(f"✅ PASS : {pass_count} 건")
-    print(f"❌ FAIL : {fail_count} 건")
-    print("="*50 + "\n")
 
-
-# ==========================================
-# 6. 실행 진입점
-# ==========================================
 if __name__ == "__main__":
     main()

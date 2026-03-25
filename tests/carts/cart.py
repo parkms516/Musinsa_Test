@@ -2,12 +2,13 @@ from pages.musinsa_page import *
 
 # TC_CART_01 | 장바구니 담기
 def TC_CART_01(driver):
-    print("\n[TC_CART_01] 장바구니 담기")
+    print("[TC_CART_01] 장바구니 담기")
+    keyword = input("검색할 키워드 입력 : ")
 
     login(driver)
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     time.sleep(2)
     scroll_down(driver, 3)
@@ -81,12 +82,13 @@ def TC_CART_01(driver):
 
 # TC_CART_02 | 장바구니 수량 확인
 def TC_CART_02(driver):
-    print("\n[TC_CART_02] 장바구니 수량 확인")
+    print("[TC_CART_02] 장바구니 수량 확인")
+    keyword = input("검색할 키워드 입력 : ")
 
     login(driver)
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     time.sleep(2)
     scroll_down(driver, 3)
@@ -165,4 +167,4 @@ def TC_CART_02(driver):
             print("수량 증가 확인 실패 또는 장바구니에서 상품 못 찾음 | FAIL")
 
     except Exception:
-        print(f"\n[테스트 결과]\n에러 발생 또는 상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 또는 에러 발생 | FAIL")

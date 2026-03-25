@@ -2,11 +2,13 @@ from pages.musinsa_page import *
 
 # TC_FILTER_01 | 남성 필터 적용
 def TC_FILTER_01(driver):
-    print("\n[TC_FILTER_01] 남성 필터 적용")
+    print("[TC_FILTER_01] 남성 필터 적용")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
+    print(f"'{keyword}' 검색 완료 및 상품 로딩")
 
     click_gender_filter_male(driver)
     scroll_down(driver, count=3)
@@ -37,26 +39,27 @@ def TC_FILTER_01(driver):
                 print(f"{i:02d} | 상품 정보 추출 실패 | FAIL")
                 fail_count += 1
 
-        print("\n[최종 테스트 결과]")
+        print("\n[테스트 결과]")
         print(f"PASS : {pass_count}건")
         print(f"FAIL : {fail_count}건")
 
     except Exception:
-        print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 | FAIL")
 
 
 
 # TC_FILTER_02 | 여성 상품 배제
 def TC_FILTER_02(driver):
-    print("\n[TC_FILTER_02] 여성 상품 배제")
+    print("[TC_FILTER_02] 여성 상품 배제")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
 
     click_gender_filter_male(driver)
     scroll_down(driver, count=3)
-    print("상품 로딩 및 필터 적용 완료")
+    print(f"'{keyword}' 검색 완료 및 상품 로딩")
 
     try:
         items = get_product_items(driver)
@@ -83,22 +86,24 @@ def TC_FILTER_02(driver):
                 print(f"{i:02d} | 상품 정보 추출 실패 | FAIL")
                 fail_count += 1
 
-        print("\n[최종 테스트 결과]")
+        print("\n[테스트 결과]")
         print(f"PASS : {pass_count}건")
         print(f"FAIL : {fail_count}건")
 
     except Exception:
-        print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 | FAIL")
 
 
 
 # TC_FILTER_03 | 복수 필터 적용
 def TC_FILTER_03(driver):
-    print("\n[TC_FILTER_03] 복수 필터 적용")
+    print("[TC_FILTER_03] 복수 필터 적용")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "맨투맨")
+    search_product(driver, keyword)
+    print(f"'{keyword}' 검색 완료 및 상품 로딩")
 
     click_gender_filter_male(driver)
     click_color_filter(driver)
@@ -139,4 +144,4 @@ def TC_FILTER_03(driver):
         print(f"FAIL : {fail_count}건")
 
     except Exception:
-        print(f"\n[최종 테스트 결과]\n상품 리스트 조회 실패 | FAIL")
+        print(f"\n[테스트 결과]\n상품 리스트 조회 실패 | FAIL")

@@ -2,20 +2,19 @@ from pages.musinsa_page import *
 
 # TC_SEARCH_01 | 정상 검색
 def TC_SEARCH_01(driver):
-    print("\n[TC_SEARCH_01] 정상 검색")
+    print(f"[TC_SEARCH_01] 정상 검색")
+    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
-    search_product(driver, "후드티")
-
-    print("검색 완료 및 상품 로딩")
+    search_product(driver, keyword)
+    print(f"'{keyword}' 검색 완료 및 상품 로딩")
 
     try:
         items = get_product_items(driver)
-
         print("\n[테스트 결과]")
         if len(items) > 0:
-            print(f"'후드티' 관련 상품 정상 노출 확인 (총 {len(items)}개) | PASS")
+            print(f"'{keyword}' 관련 상품 정상 노출 확인 (총 {len(items)}개) | PASS")
         else:
             print("상품 목록이 비어 있음 | FAIL")
 
@@ -26,7 +25,7 @@ def TC_SEARCH_01(driver):
 
 # TC_SEARCH_02 | 존재하지 않는 검색
 def TC_SEARCH_02(driver):
-    print("\n[TC_SEARCH_02] 존재하지 않는 검색")
+    print("[TC_SEARCH_02] 존재하지 않는 검색")
 
     open_main(driver)
     open_search(driver)
@@ -54,7 +53,7 @@ def TC_SEARCH_02(driver):
 
 # TC_SEARCH_03 | 빈칸 검색
 def TC_SEARCH_03(driver):
-    print("\n[TC_SEARCH_03] 빈칸 검색")
+    print("[TC_SEARCH_03] 빈칸 검색")
 
     open_main(driver)
     open_search(driver)
