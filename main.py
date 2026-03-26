@@ -5,13 +5,7 @@ from tests.sortings.sorting import *
 from tests.products.product import *
 from tests.carts.cart import *
 
-ALL_TESTS = [
-    TC_SEARCH_01, TC_SEARCH_02, TC_SEARCH_03,
-    TC_FILTER_01, TC_FILTER_02, TC_FILTER_03,
-    TC_SORTING_01, TC_SORTING_02,
-    TC_PRODUCT_01, TC_PRODUCT_02,
-    TC_CART_01, TC_CART_02
-]
+ALL_TESTS = [TC_SEARCH_01, TC_SEARCH_02, TC_SEARCH_03, TC_FILTER_01, TC_FILTER_02, TC_FILTER_03, TC_SORTING_01, TC_SORTING_02, TC_PRODUCT_01, TC_PRODUCT_02, TC_CART_01, TC_CART_02]
 
 
 def main():
