@@ -1,9 +1,8 @@
 from pages.musinsa_page import *
 
 # TC_PRODUCT_01 | 상품 상세페이지 이동
-def TC_PRODUCT_01(driver):
+def TC_PRODUCT_01(driver, keyword="후드티"):
     print("[TC_PRODUCT_01] 상품 상세페이지 이동")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
@@ -45,9 +44,8 @@ def TC_PRODUCT_01(driver):
 
 
 # TC_PRODUCT_02 | 할인율 계산
-def TC_PRODUCT_02(driver):
+def TC_PRODUCT_02(driver, keyword="후드티"):
     print("[TC_PRODUCT_02] 할인율 계산")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
@@ -109,7 +107,7 @@ def TC_PRODUCT_02(driver):
                 pass_count += 1
             else:
                 gap = sale_price - calc_price
-                print(f"할인율 계산 가격 불일치 (차이: {gap}원) | FAIL")
+                print(f"할인율 계산 가격 불일치 (차이 : {gap}원) | FAIL")
                 fail_count += 1
 
         except Exception:

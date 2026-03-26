@@ -1,9 +1,8 @@
 from pages.musinsa_page import *
 
 # TC_FILTER_01 | 남성 필터 적용
-def TC_FILTER_01(driver):
+def TC_FILTER_01(driver, keyword="맨투맨"):
     print("[TC_FILTER_01] 남성 필터 적용")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
@@ -49,9 +48,8 @@ def TC_FILTER_01(driver):
 
 
 # TC_FILTER_02 | 여성 상품 배제
-def TC_FILTER_02(driver):
+def TC_FILTER_02(driver, keyword="맨투맨"):
     print("[TC_FILTER_02] 여성 상품 배제")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
@@ -96,9 +94,8 @@ def TC_FILTER_02(driver):
 
 
 # TC_FILTER_03 | 복수 필터 적용
-def TC_FILTER_03(driver):
+def TC_FILTER_03(driver, keyword="맨투맨"):
     print("[TC_FILTER_03] 복수 필터 적용")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)

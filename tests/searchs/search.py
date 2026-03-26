@@ -1,9 +1,8 @@
 from pages.musinsa_page import *
 
 # TC_SEARCH_01 | 정상 검색
-def TC_SEARCH_01(driver):
+def TC_SEARCH_01(driver, keyword="후드티"):
     print(f"[TC_SEARCH_01] 정상 검색")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)

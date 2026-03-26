@@ -1,9 +1,8 @@
 from pages.musinsa_page import *
 
 # TC_SORTING_01 | 낮은 가격순 정렬
-def TC_SORTING_01(driver):
+def TC_SORTING_01(driver, keyword="후드티"):
     print("[TC_SORTING_01] 낮은 가격순 정렬")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)
@@ -65,10 +64,9 @@ def TC_SORTING_01(driver):
 
 
 
-# TC_SORTING_02 | 낮은 할인율순 정렬
-def TC_SORTING_02(driver):
+# TC_SORTING_02 | 할인율순 정렬
+def TC_SORTING_02(driver, keyword="후드티"):
     print("[TC_SORTING_02] 할인율순 정렬")
-    keyword = input("검색할 키워드 입력 : ")
 
     open_main(driver)
     open_search(driver)

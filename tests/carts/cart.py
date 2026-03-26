@@ -1,9 +1,8 @@
 from pages.musinsa_page import *
 
 # TC_CART_01 | 장바구니 담기
-def TC_CART_01(driver):
+def TC_CART_01(driver, keyword="후드티"):
     print("[TC_CART_01] 장바구니 담기")
-    keyword = input("검색할 키워드 입력 : ")
 
     login(driver)
     open_main(driver)
@@ -81,9 +80,8 @@ def TC_CART_01(driver):
 
 
 # TC_CART_02 | 장바구니 수량 확인
-def TC_CART_02(driver):
+def TC_CART_02(driver, keyword="후드티"):
     print("[TC_CART_02] 장바구니 수량 확인")
-    keyword = input("검색할 키워드 입력 : ")
 
     login(driver)
     open_main(driver)

@@ -20,54 +20,64 @@ def main():
     while True:
         print("\n[테스트 목록]")
         print("0 | 전체 테스트")
-        for i in range(len(ALL_TESTS)):
-            print(f"{i + 1} | {ALL_TESTS[i].__name__}")
 
-        choice = input("\n실행할 번호 입력 (종료 = n) : ").strip()
+        for i, test in enumerate(ALL_TESTS, 1):
+            print(f"{i} | {test.__name__}")
+
+        choice = input("\n번호 입력 (예: 1 3 5, 종료 = n) : ").strip()
 
         if choice.lower() == 'n':
             break
 
-        if choice.isdigit():
-            num = int(choice)
+        nums = []
+        for c in choice.split():
+            if not c.isdigit():
+                print("숫자 또는 n을 입력하세요")
+                nums = []
+                break
+            nums.append(int(c))
+
+        if not nums:
+            continue
+
+        if 0 in nums:
+            selected_tests = ALL_TESTS
+            print("\n[전체 테스트 시작]")
+        else:
             selected_tests = []
 
-            if num == 0:
-                selected_tests = ALL_TESTS
-                print("\n[전체 테스트] 시작")
-                print("-" * 50)
+            for n in nums:
+                if 1 <= n <= len(ALL_TESTS):
+                    test = ALL_TESTS[n - 1]
+                    if test not in selected_tests:
+                        selected_tests.append(test)
+                else:
+                    print(f"{n}번은 없는 번호입니다")
+                    selected_tests = []
+                    break
 
-            elif 1 <= num <= len(ALL_TESTS):
-                selected_tests = [ALL_TESTS[num - 1]]
-                print(f"\n[{ALL_TESTS[num - 1].__name__}] 시작")
-                print("-" * 50)
-
-            else:
-                print("[없는 번호] 다시 확인해주세요.")
+            if not selected_tests:
                 continue
 
-            # --- 실제 실행 로직 ---
-            if driver is None:
-                driver = get_driver()
-
-            for test_case in selected_tests:
-                try:
-                    driver.get("https://www.musinsa.com")
-                    test_case(driver)
-
-                except Exception as e:
-                    print(f"오류 발생 : {e}")
-
-        else:
-            print("숫자 또는 'n'만 입력 가능합니다.")
+            print(f"\n[{', '.join(t.__name__ for t in selected_tests)}] 시작")
 
         print("-" * 50)
-        again = input("다른 테스트를 더 진행할까요? (y/n) : ").strip().lower()
+
+        if driver is None:
+            driver = get_driver()
+
+        for test in selected_tests:
+            print(f"[실행] {test.__name__}")
+            test(driver)
+
+        print("-" * 50)
+
+        again = input("다시 실행하시겠습니까? (y/n) : ").strip().lower()
         if again == 'n':
             break
 
     if driver:
-        print("프로그램을 종료하고 브라우저를 닫습니다.")
+        print("브라우저 종료")
         driver.quit()
 
 
